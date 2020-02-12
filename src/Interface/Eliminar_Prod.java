@@ -9,7 +9,9 @@ import Conexion.ClsConexion;
 import Conexion.Procedimientos;
 import static Interface.Inventario.res;
 import java.sql.SQLException;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -150,11 +152,20 @@ public class Eliminar_Prod extends javax.swing.JFrame {
                 txt_clave_prod.setText("");
                
                 res = ClsConexion.Consulta("select * from pizzas");
+                DefaultTableModel producto = (DefaultTableModel) jTable1.getModel();
+        producto.setRowCount(0);
                 while(res.next()){
                     if(res.getString(1).equals(b)){
                         JOptionPane.showMessageDialog(null, "DATOS ENCONTRADOS");
                         txt_clave_prod.setText(res.getString(1));
+                        Vector v = new Vector();
                         
+                v.add(res.getInt(1));
+                v.add(res.getString(2));
+                v.add(res.getString(3));
+                v.add(res.getFloat(4));
+                producto.addRow(v);
+                        jTable1.getModel();
                     }
                 }
                 JOptionPane.showMessageDialog(null, "DATOS NO ENCONTRADOS");
@@ -163,7 +174,7 @@ public class Eliminar_Prod extends javax.swing.JFrame {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */

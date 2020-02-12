@@ -48,6 +48,11 @@ public class Registra_Producto extends javax.swing.JFrame {
 
         btn_añadir_prod.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_añadir_prod.setText("Añadir");
+        btn_añadir_prod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_añadir_prodActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("NUEVO PRODUCTO");
@@ -107,6 +112,10 @@ public class Registra_Producto extends javax.swing.JFrame {
     private void txt_nom_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nom_prodActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nom_prodActionPerformed
+
+    private void btn_añadir_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadir_prodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_añadir_prodActionPerformed
 
     /**
      * @param args the command line arguments
