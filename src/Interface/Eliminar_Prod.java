@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import Conexion.Procedimientos;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Freddy Alejandro
@@ -43,6 +47,11 @@ public class Eliminar_Prod extends javax.swing.JFrame {
         jLabel2.setText("Clave de Producto:");
 
         btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,6 +68,11 @@ public class Eliminar_Prod extends javax.swing.JFrame {
 
         btn_elm_prod.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_elm_prod.setText("Eliminar");
+        btn_elm_prod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_elm_prodActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +117,28 @@ public class Eliminar_Prod extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_elm_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elm_prodActionPerformed
+    
+
+
+ int row = jTable1.getSelectedRow();
+        int opc = JOptionPane.showConfirmDialog(this, "¿ESTAS SEGURO QUE DESEA ELIMINAR ESTE REGISTRO?","Pregunta",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(opc == JOptionPane.YES_OPTION){
+            try{
+                Procedimientos.EliminarProducto(Integer.parseInt(jTable1.getValueAt(row, 0).toString()));
+            }catch (SQLException e){
+            }
+        }        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_elm_prodActionPerformed
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+  
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
     /**
      * @param args the command line arguments
