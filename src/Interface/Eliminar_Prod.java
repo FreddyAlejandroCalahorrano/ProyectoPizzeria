@@ -5,7 +5,9 @@
  */
 package Interface;
 
+import Conexion.ClsConexion;
 import Conexion.Procedimientos;
+import static Interface.Inventario.res;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -135,7 +137,29 @@ public class Eliminar_Prod extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_elm_prodActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-  
+
+         if(txt_clave_prod.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "META BIEN SUS DATOS", "Error", JOptionPane.ERROR_MESSAGE);
+            txt_clave_prod.setText("");
+            txt_clave_prod.requestFocus();
+        } else {
+            try {
+                String b;
+                Procedimientos.BuscarProducto(Integer.parseInt(txt_clave_prod.getText()));
+                b = txt_clave_prod.getText();
+                txt_clave_prod.setText("");
+               
+                res = ClsConexion.Consulta("select * from pizzas");
+                while(res.next()){
+                    if(res.getString(1).equals(b)){
+                        JOptionPane.showMessageDialog(null, "DATOS ENCONTRADOS");
+                        txt_clave_prod.setText(res.getString(1));
+                        
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "DATOS NO ENCONTRADOS");
+            }catch(SQLException e){
+            }
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarActionPerformed
@@ -143,7 +167,8 @@ public class Eliminar_Prod extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static  void main(String args[]) 
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
